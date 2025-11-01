@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Uzum Test UI</title>
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <div class="container">
+  <h1>uzum java</h1>
+
+    <section class="card">
+      <h2>Добавить Person</h2>
+      <form id="personForm">
+        <label>id <input name="id" type="number" required></label>
+        <label>name <input name="name" type="text" required></label>
+        <label>birthdate (dd.MM.yyyy) <input name="birthdate" type="text" required></label>
+        <button type="submit">Добавить</button>
+      </form>
+      <pre id="personResult" class="result"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Добавить Car</h2>
+      <form id="carForm">
+        <label>id <input name="id" type="number" required></label>
+        <label>model <input name="model" type="text" required placeholder="BMW-X5"></label>
+        <label>horsepower <input name="horsepower" type="number" required></label>
+        <label>ownerId <input name="ownerId" type="number" required></label>
+        <button type="submit">Добавить</button>
+      </form>
+      <pre id="carResult" class="result"></pre>
+    </section>
+
+    <section class="card">
+      <h2>PersonWithCars</h2>
+      <label>personId <input id="personIdQuery" type="number" value="1"></label>
+      <button id="btnGetPersonWithCars">Получить</button>
+      <pre id="personWithCarsResult" class="result"></pre>
+    </section>
+
+    <section class="card side-by-side">
+      <div>
+        <h2>Statistics</h2>
+        <button id="btnStats">Получить</button>
+        <pre id="statsResult" class="result"></pre>
+      </div>
+      <div>
+        <h2>Clear</h2>
+        <button id="btnClear">Очистить</button>
+        <pre id="clearResult" class="result"></pre>
+      </div>
+    </section>
+
+    <footer>
+      <small>&copy; Uzum Java</small>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.demo.CarServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-11-01T23:01:06.385Z" hostname="DESKTOP-KUIIO68" time="0.323">
+  <properties/>
+  <testcase name="saveCar_OwnerNotExist()" classname="com.example.demo.CarServiceTest" time="0.304"/>
+  <testcase name="saveCar_Ok()" classname="com.example.demo.CarServiceTest" time="0.011"/>
+  <testcase name="saveCar_BadModel()" classname="com.example.demo.CarServiceTest" time="0.003"/>
+  <testcase name="saveCar_BadHorsepower()" classname="com.example.demo.CarServiceTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

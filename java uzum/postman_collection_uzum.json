@@ -1,0 +1,111 @@
+{
+  "info": {
+    "name": "uzum-java-postman-collection",
+    "_postman_id": "c6c0f8e1-9d7a-4f3b-8b5b-1f8b80d7a6c2",
+    "description": "Simple collection to validate API endpoints for the Uzum Java test project (POST/GET/clear)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Person",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 100,\n  \"name\": \"TestPerson\",\n  \"birthdate\": \"20.10.2003\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/person",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["person"]
+        }
+      }
+    },
+    {
+      "name": "Create Car",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 200,\n  \"model\": \"Toyota-Supra\",\n  \"horsepower\": 400,\n  \"ownerId\": 100\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/car",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["car"]
+        }
+      }
+    },
+    {
+      "name": "Get PersonWithCars",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/personwithcars?personid=100",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["personwithcars"],
+          "query": [
+            {
+              "key": "personid",
+              "value": "100"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Statistics",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/statistics",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["statistics"]
+        }
+      }
+    },
+    {
+      "name": "Clear Data",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/clear",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["clear"]
+        }
+      }
+    }
+  ]
+}
