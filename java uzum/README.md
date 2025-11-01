@@ -1,104 +1,84 @@
 # Uzum Java Internship Test
 
-This is my simple REST API for Uzum internship test (task about Person and Car).
+Задания стажировки Uzum.
 
-## Stack
-- Java 17
-- Spring Boot 3.2
-- PostgreSQL (run in Docker)
+Коротко о стеке
+- Java 17+
+- Spring Boot 3.x
+- Spring Data JPA (Hibernate)
+- Validation (Jakarta)
 - Gradle (Kotlin DSL)
-- Lombok
-- JPA / Hibernate
-- Jacoco / JUnit 5 (for tests)
+- JUnit5, JaCoCo, Testcontainers (опционально для интеграционных тестов)
 
-## How to run
+Короткие инструкции
 
-1. **(Option 1) With Docker Compose:**
+1) Запуск через Docker Compose (Postgres + приложение)
 
-First, you need Docker and Docker Compose installed.
+  Требуется установленный Docker и Docker Compose.
 
-```
+
 docker-compose up --build
-```
 
-It will run PostgreSQL and the Spring Boot app. App is on [http://localhost:8080](http://localhost:8080)
+  Приложение будет доступно по: http://localhost:8080
 
-2. **(Option 2) Local Start:**
+2) Локальный запуск
 
-- Start PostgreSQL (user: postgres, password: postgres, db: uzumdb)
-- Build and run app:
+ 
+  Технологии
+  ---------
+  - Java 17+
+  - Spring Boot 3.x
+  - Spring Data JPA (Hibernate)
+  - H2 (встроенно для локального запуска)
+  - Gradle (Kotlin DSL)
+  - JUnit 5, JaCoCo
 
-```
-./gradlew.bat clean build
-java -jar build/libs/*.jar
-```
+  API (основные эндпоинты)
+  --------------------------------
+  - POST /person — создать Person (JSON: id, name, birthdate)
+  - POST /car — создать Car (JSON: id, model, horsepower, ownerId)
+  - GET /personwithcars?personid={id} — получить Person с автомобилями
+  - GET /statistics — получить статистику
+  - GET /clear — очистить данные (только для локальной проверки)
 
-## API Endpoints
+  Файлы в репозитории
+  --------------------
+  - `src/main/java` — исходники сервиса
+  - `src/test/java` — юнит‑тесты
+  - `build.gradle.kts` — настройки сборки
+  - `postman_collection_uzum.json` — готовая коллекция для Postman (импорт)
+  - `verify.ps1` — скрипт быстрой локальной проверки (опционально)
 
-- `POST /person` — add new person
-- `POST /car` — add new car
-- `GET /personwithcars?personid=123` — get person with car list
-- `GET /statistics` — show statistics
-- `GET /clear` — delete all persons and cars
+  Как запустить (коротко)
+  ----------------------
+  Самые простые команды для локальной проверки (Windows / PowerShell) либо использовать intellijIdea:
 
-## Request/Response example:
+  ```powershell
+  .\gradlew.bat clean test jacocoTestReport
+  .\gradlew.bat bootJar
+  java -jar build\libs\uzum-java-student-0.0.1-SNAPSHOT.jar --spring.datasource.url=jdbc:h2:mem:testdb
+  ```
 
-**Add Person:**
-```
-POST /person
-{
-  "id": 1,
-  "name": "John",
-  "birthdate": "01.01.2000"
-}
-```
+  После старта UI доступен по адресу: http://localhost:8080/
 
-**Add Car:**
-```
-POST /car
-{
-  "id": 101,
-  "model": "BMW-X5",
-  "horsepower": 200,
-  "ownerId": 1
-}
-```
+  Тестирование и покрытие
+  -----------------------
+  - Юнит‑тесты запускаются командой `./gradlew test` (в репозитории используется Gradle wrapper).
+  - JaCoCo HTML‑отчёт генерируется вместе с `jacocoTestReport` и находится в `build/reports/jacoco/test/html/index.html`.
 
-**Person With Cars:**
-```
-GET /personwithcars?personid=1
-// response: see PersonWithCarsResponse.java
-```
+  Postman
+  -------
+  В корне проекта есть `postman_collection_uzum.json` — импортируйте его в Postman для быстрого набора запросов (Create Person, Create Car, Get PersonWithCars, Get Statistics).
 
-**Statistics:**
-```
-GET /statistics
-// Shows: personcount, carcount, uniquevendorcount
-```
+  
+  Docker / Docker Compose
+  -----------------------
+  В репозитории присутствует `Dockerfile` и `docker-compose.yml` для запуска стека с Postgres. Команда:
 
-**Clear:**
-```
-GET /clear
-```
 
-## Tests & Coverage
+  docker-compose up --build
 
-All main logic is covered by unit tests (see `/src/test/java/...`).
-To get Jacoco coverage report:
-```
-./gradlew.bat test jacocoTestReport
-```
-See report in:
-```
-build/reports/jacoco/test/html/index.html
-```
 
-## What to screenshot for test delivery:
-- Postman (good API calls)
-- Database with data
-- Jacoco coverage report
-- Running project (Tomcat logs)
+  
 
----
 
-Simple comments and code to show my logic. If you have questions — please write!
